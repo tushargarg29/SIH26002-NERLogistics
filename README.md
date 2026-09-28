@@ -1,77 +1,374 @@
-
 # 🚚 NER Logistics
 
-## Risk-Aware Logistics Intelligence Platform for the North Eastern Region
+### AI-Powered Risk-Aware Logistics and Accessibility Intelligence Platform for the North Eastern Region (NER)
 
-NER Logistics is a prototype developed for **Smart India Hackathon 2026 – Problem Statement SIH26002**.
+> **"The shortest route is not always the safest route."**
 
-The platform focuses on improving logistics and transportation reliability in the **North Eastern Region (NER) of India** by considering not only distance and travel time, but also hazards such as **landslides, floods, heavy rainfall, road blockages, and accessibility risks**.
-
-The core idea is simple:
-
-> **The shortest route is not always the safest or most reliable route.**
-
-NER Logistics aims to provide risk-aware route recommendations for logistics and essential-goods transportation.
+**Smart India Hackathon 2026 — SIH26002**  
+**Theme:** Transportation & Logistics  
+**Category:** Software  
+**Team:** Aeropath
 
 ---
 
-## 🎯 Problem
+## 📌 About the Project
 
-Transportation and logistics in the North Eastern Region can be affected by:
+**NER Logistics** is an AI-powered logistics and route-planning platform designed for the challenging transportation conditions of India's **North Eastern Region (NER)**.
 
+The North Eastern Region faces transportation challenges due to:
+
+- Heavy rainfall and flooding
 - Landslides
-- Floods
-- Heavy rainfall
-- Road blockages
-- Difficult terrain
-- Road accessibility issues
-- Unexpected transportation delays
+- Hilly and difficult terrain
+- Road-condition variations
+- Disaster-related road blockages
+- Limited accessibility in certain areas
+- Disruptions to supply chains and transportation
 
-A conventional navigation system may primarily focus on finding a route based on distance, travel time, or available road information.
+Traditional navigation systems mainly focus on finding the **shortest or fastest route**.
 
-NER Logistics introduces an additional layer of **risk awareness** to help identify safer and more reliable routes.
+NER Logistics takes a different approach:
+
+> **It considers route safety and environmental risks along with travel time.**
+
+The platform evaluates road segments using multiple risk factors and generates a **risk-aware route recommendation**.
 
 ---
 
-## 💡 Key Features
+# 🎯 Problem Statement
 
-### 🗺️ Interactive Logistics Map
+### SIH26002
 
-- Interactive map of the North Eastern Region
-- Origin and destination selection
-- OpenStreetMap-based visualization
-- Route visualization using Leaflet
+**AI-Based Smart Logistics and Accessibility Intelligence Platform for North Eastern Region (NER)**
 
-### 🛣️ Route Planning
+Transportation and logistics in the North Eastern Region can be severely affected by environmental and road-related hazards.
 
-- Driving route calculation
-- Alternative route detection
-- Distance estimation
-- Estimated travel time
-- Route comparison
+A route that appears optimal based only on distance or travel time may pass through areas affected by:
 
-### ⚠️ Hazard & Disaster Awareness
-
-The prototype currently supports simulated hazard information for:
-
-- Landslides
 - Floods
+- Landslides
 - Heavy rainfall
-- Road blockages
+- Poor road conditions
+- Hazard-prone regions
+- Different road types and terrain conditions
 
-Hazards are displayed directly on the map with severity information.
+This creates risks for vehicles, passengers, goods, and supply-chain operations.
 
-### 🧠 Risk-Aware Route Recommendation
+NER Logistics aims to provide a smarter routing system that considers **risk before and during travel**.
 
-Instead of selecting a route only based on travel time, the system analyzes the proximity of routes to hazard zones and calculates a risk score.
+---
 
-### 🌐 Local Language Support
+# 💡 Our Solution
 
-The platform supports **local languages for users in the North Eastern Region**, making the system more accessible and easier to use for local people who may prefer communicating in their regional language rather than English.
+NER Logistics combines:
 
-This feature improves accessibility and helps make the logistics platform more **inclusive and user-friendly for local communities and logistics operators**.
+**Route Planning + Risk Prediction + Hazard Awareness + Vehicle Monitoring + Dynamic Rerouting**
 
-The current prototype uses a simplified scoring approach:
+The system first generates possible routes between the source and destination.
+
+It then evaluates the road segments using relevant environmental and road-related factors.
+
+An **XGBoost-based risk model** is used to calculate a risk score.
+
+The resulting information is visualized on the map so that users can understand which areas are relatively safer or riskier.
+
+If the risk situation changes during a simulated journey, the system can support **dynamic rerouting** to provide an alternative route.
+
+---
+
+# Key Features
+
+## 1. 🧠 AI-Based Risk Prediction
+
+The platform uses an XGBoost model to estimate risk for road segments.
+The risk model considers factors such as:
+- Road type
+- Flood conditions
+- Rainfall/environmental conditions
+- Landslide-related risk
+- Road conditions
+- Historical risk information
+The model produces a risk score that can be used during route evaluation.
+
+## 2. 🗺️ Risk-Aware Route Planning
+
+Instead of considering only the shortest route, NER Logistics evaluates routes using
+road-segment risk information generated by the risk prediction model.
+
+The system combines:
+
+- Route travel time
+- Road and environmental risk
+- Risk score of road segments
+
+This enables the system to recommend safer route alternatives and provide a
+better balance between **safety and travel efficiency**.
+
+## 3. 🌧️ Environmental Risk Analysis
+
+The platform considers environmental hazards that are particularly relevant to the North Eastern Region.
+
+The risk analysis includes factors such as:
+
+- 🌊 Flood conditions
+- 🌧️ Rainfall
+- 🏔️ Landslide risk
+- ⚠️ Hazard zones
+- 🚧 Road-related conditions
+
+These factors contribute to the risk assessment of road segments and can be visualized on the route map.
+
+## 4. 🚧 Road Risk Analysis
+
+Different road types and road conditions can contribute differently to transportation risk.
+
+NER Logistics incorporates road-related information into the risk evaluation process, allowing different road segments to have different risk levels.
+
+## 5. 📊 Interactive Risk Visualization
+
+The route and associated risk information are displayed through an interactive map.
+
+Users can visualize:
+
+- 🛣️ Route options
+- ⚠️ Risky road segments
+- 🌊 Hazard zones
+- 🛡️ Safer route alternatives
+- 🚚 Vehicle movement
+
+This provides a visual representation of route risk instead of presenting only a numerical risk score.
+
+## 6. 🚚 Vehicle Tracking Simulation
+
+The prototype includes simulated vehicle movement along the selected route.
+
+The vehicle simulation allows the system to demonstrate how a route can be monitored during travel and how changing conditions can affect route decisions.
+
+## 7. 🔄 Dynamic Rerouting
+
+If a new hazard or road-risk condition appears during the journey, the system can recalculate the route and identify an alternative path.
+
+### Example
 
 ```text
-Route Score = Travel Time + Risk Penalty
+Vehicle starts journey
+        ↓
+Hazard detected
+        ↓
+Current route becomes risky
+        ↓
+Risk engine evaluates alternatives
+        ↓
+Alternative route generated
+        ↓
+Vehicle is rerouted
+```
+This is intended to make the system more adaptive than static route planning.
+
+## 8. 🌐 Multi-Language Accessibility
+
+The platform is designed with multi-language accessibility in mind to make the system more usable across different linguistic groups.
+Future language support can be expanded to include regional languages of the North Eastern Region.
+
+---
+
+## ⚙️ How the System Works
+The overall workflow is:
+```text
+User enters destination
+        ↓
+Route generation
+        ↓
+Multiple route options
+        ↓
+Road + environmental risk data
+        ↓
+XGBoost Risk Model
+        ↓
+Risk score for road segments
+        ↓
+Risk-aware route evaluation
+        ↓
+Route recommendation
+        ↓
+Vehicle movement / monitoring
+        ↓
+New hazard detected
+        ↓
+Risk recalculation
+        ↓
+Dynamic rerouting
+```
+--- 
+
+## 🧠 Risk Prediction Pipeline
+The risk prediction process can be represented as:
+```text
+Environmental Data
+       +
+Road Information
+       +
+Hazard Information
+       +
+Historical Risk
+       ↓
+Feature Processing
+       ↓
+XGBoost Model
+       ↓
+Risk Score
+       ↓
+Road Segment Risk
+       ↓
+Route Risk Evaluation
+```
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+- React
+- Vite
+- Mapbox GL JS
+- Recharts
+
+### Backend
+- Python
+- FastAPI
+
+### Machine Learning
+- XGBoost
+
+### Routing
+- Mapbox Directions API
+
+### Data
+- JSON-based prototype data
+- Simulated hazard data
+- Simulated vehicle/GPS data
+
+### Real-Time Communication
+- WebSockets
+
+### Version Control
+- Git
+- GitHub
+
+---
+
+## ⚠️ Current Limitations
+
+The current prototype has several limitations:
+
+### 1. 🌧️ Real-Time Hazard Data
+
+Comprehensive real-time hazard data may not be available for every location.
+
+The prototype therefore uses available and simulated data to demonstrate the risk-aware routing workflow.
+
+### 2. 📍 GPS Hardware
+
+Vehicle movement is simulated in the current prototype rather than being connected to physical GPS hardware.
+
+### 3. 📊 Historical Data
+
+Large and comprehensive historical risk datasets for all NER road segments are not currently available.
+
+### 4. 🧠 Model Validation
+
+Further field-level data and validation are required before deploying the risk prediction model for real-world logistics operations.
+
+These limitations represent the current prototype stage and can be addressed through future development.
+
+---
+
+## 🔮 Future Enhancements
+
+### 🌐 Real-Time Data Integration
+
+Future versions can integrate live data sources for:
+
+- Weather
+- Rainfall
+- Flood levels
+- Landslides
+- Road closures
+- Traffic
+- Disaster alerts
+
+### 🧠 Improved Machine Learning
+
+The risk prediction model can be improved using larger and more diverse datasets.
+
+Possible improvements include:
+
+- More historical road-risk data
+- Additional environmental and road features
+- Continuous model training
+- Location-specific risk models
+- Improved feature engineering
+- Better risk calibration
+
+### 📡 Real GPS Integration
+
+Connect the platform to real vehicle GPS systems for live vehicle and fleet monitoring.
+
+### 📴 Offline Routing
+
+Future versions can support routing in areas with limited connectivity by using:
+
+- Cached road networks
+- Cached route information
+- Historical risk data
+- Local route calculation
+
+This can be particularly useful for remote areas with unreliable internet connectivity.
+
+### 🏗️ Scalable Architecture
+
+As the platform grows, the system can be extended into independently scalable services for:
+
+- Route processing
+- Risk prediction
+- Hazard management
+- Vehicle tracking
+- Notifications
+
+  ---
+
+## 🎯 Expected Impact
+
+NER Logistics is intended to support:
+
+- 🚚 Safer transportation through risk-aware route planning
+- 📦 More reliable logistics and supply-chain operations
+- 🌧️ Better awareness of environmental hazards
+- 🛣️ Improved route decision-making in challenging terrain
+- 🔄 Faster response to changing road and hazard conditions
+- ⏱️ Reduced disruption and unnecessary delays
+- 💰 Potential reduction in transportation and operational costs
+- 🌐 Improved connectivity across challenging NER regions
+
+  ---
+
+## 👥 Intended Users
+
+NER Logistics can support:
+
+- Logistics and delivery companies
+- Fleet operators
+- Transportation planners
+- Government transportation agencies
+- Disaster-response teams
+- Emergency services
+- Supply-chain managers
+---
+
+## 🏆 Smart India Hackathon 2026
+
+| Problem ID | SIH26002 |
+| Problem Title | AI-Based Smart Logistics and Accessibility Intelligence Platform for North Eastern Region (NER) |
+| Theme | Transportation & Logistics |
+| Category | Software |
+| Team Name | Aeropath |
+| Project Name | NER Logistics |
