@@ -377,7 +377,4 @@ NER Logistics can support:
 
 👉 [NER Logistics — Live Prototype](https://nerlogistics-weld.vercel.app/)
 
-The deployed prototype demonstrates the risk-aware logistics and route-planning workflow.
-
----
 ---
