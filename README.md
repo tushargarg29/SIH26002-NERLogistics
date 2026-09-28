@@ -90,7 +90,7 @@ The risk model considers factors such as:
 - Landslide-related risk
 - Road conditions
 - Historical risk information
-- 
+  
 The model produces a risk score that can be used during route evaluation.
 
 ### 2. 🗺️ Risk-Aware Route Planning
